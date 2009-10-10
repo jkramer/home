@@ -1,0 +1,47 @@
+COLOR tty
+
+OPTIONS -F -T 0
+
+TERM linux
+TERM screen
+TERM console
+TERM con132x25
+TERM con132x30
+TERM con132x43
+TERM con132x60
+TERM con80x25
+TERM con80x28
+TERM con80x30
+TERM con80x43
+TERM con80x50
+TERM con80x60
+TERM xterm
+TERM rxvt
+TERM vt100
+TERM Eterm
+
+EIGHTBIT 1
+
+NORMAL 00
+FILE 00 
+DIR 38;5;99
+LINK 01;35
+FIFO 40;33
+SOCK 01;35
+BLK 40;33;01
+CHR 40;33;01
+
+EXEC 01;32 
+
+.btm 01;32
+.tar 01;31
+.tgz 01;31
+.arj 01;31
+.gz  01;31
+.bz2 01;31
+.zip 01;31
+
+.htm 01;36
+.php 01;36
+.php3 01;36
+.html 01;36
