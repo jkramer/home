@@ -1,0 +1,24 @@
+# vim:filetype=zsh
+
+_MAGIC_FILE=".zshrc"
+
+# Magically source files when changing directories. When changing to another
+# directory, search the directory and its parents for a file called ".env.rc"
+# or "env" and source it, if found. Useful to set stuff for projects
+# automatically, like exporting PERL5LIB, generating ctags files, setting up
+# project-specific aliases etc.
+function chpwd; {
+	DIRECTORY="$PWD"
+	while true; do
+		[[ $PWD = '/' || $PWD == $HOME ]] && break
+
+		if [ -f "./$_MAGIC_FILE" ]; then
+			source "./$_MAGIC_FILE"
+			break
+		fi
+
+		builtin cd -q ..
+	done
+
+	builtin cd -q "$DIRECTORY"
+}

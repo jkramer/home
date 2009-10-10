@@ -1,0 +1,30 @@
+# vim:syn=zsh
+
+VIEW='/usr/bin/firefox'
+CURL='/usr/bin/curl'
+
+# URL encode something and print it.
+function url-encode; {
+	setopt extendedglob
+	echo "${${(j: :)@}//(#b)(?)/%$[[##16]##${match[1]}]}"
+}
+
+# Search google for the given keywords.
+function google; {
+	$VIEW "http://www.google.com/search?q=`url-encode "${(j: :)@}"`"
+}
+
+# Make the given URL tiny.
+function tinyurl; {
+	setopt extendedglob
+
+	DATA="url=$1"
+	BASE='http://tinyurl.com/create.php'
+
+	$CURL -s -L -d "$DATA" "$BASE" | while read LINE; do
+		if [[ "$LINE" == *(#b)("http://tinyurl.com/"[a-zA-Z0-9]##)* ]]; then
+			print "$match[1]"
+			return
+		fi
+	done
+}

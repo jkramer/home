@@ -1,0 +1,38 @@
+# vim:filetype=zsh
+
+
+# Initialize stuff.
+_LAST_TARGET=$HOME
+
+functions[preexec]+=" ; save-target-path \$@"
+
+
+function save-target-path {
+	local -a cmd
+	cmd=(${(z)1})
+
+	for p in $cmd; do
+		p=${(Q)~p}
+		if [[ -d $p ]]; then
+			if [[ $p == "/"* ]]; then
+				_LAST_TARGET=$p
+			else
+				_LAST_TARGET="$PWD/$p"
+			fi
+		fi
+	done
+}
+
+
+function change-to-last-target {
+	if [[ ! -z "$_LAST_TARGET" ]]; then
+		[[ -d "$_LAST_TARGET" ]] && cd "$_LAST_TARGET"
+		zle reset-prompt
+	fi
+}
+
+
+# Setup widget and shortcut.
+zle -N change-to-last-target-widget change-to-last-target
+
+bindkey '^T' change-to-last-target-widget

@@ -1,0 +1,21 @@
+# vim:syn=zsh
+
+source "$HOME/.zsh/func/internet"
+
+MADPLAY="/usr/bin/madplay"
+OGGPLAY="/usr/bin/ogg123"
+
+alias oggplay="$OGGPLAY"
+
+function stream-mp3; {
+	while true; do
+		$CURL -s -L "$1" | $MADPLAY -Q -
+	done
+}
+
+# Home of podsync.
+export PODSYNCHOME="$HOME/media/podsync"
+
+export SHC_SOCKET="/tmp/shell-fm.sck"
+
+alias mp="mpc --no-status"
