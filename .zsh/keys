@@ -1,0 +1,31 @@
+# vim:filetype=zsh
+
+# Fix/configure some keys.
+bindkey "\e[1~" "beginning-of-line"
+bindkey "\e[4~" "end-of-line"
+bindkey "\e[3~" "delete-char"
+bindkey "^A" "beginning-of-line"
+bindkey "^E" "end-of-line"
+
+# Alt + arrow left/right jump over words in command line.
+bindkey "^[^[[C" forward-word
+bindkey "^[^[[D" backward-word
+
+# Control + B jumps to "base" directory.
+function return-to-base; {
+	if [[ ! -z "$BASE" ]]; then
+		[[ -d "$BASE" ]] && cd -q "$BASE"
+		zle reset-prompt
+	fi
+}
+
+zle -N return-to-base-widget return-to-base
+
+bindkey "^B" return-to-base-widget
+
+# ESC-e opens command line in editor.
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '\ee' edit-command-line
+
+bindkey -s "\el" " | less"
