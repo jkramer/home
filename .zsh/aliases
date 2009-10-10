@@ -1,0 +1,13 @@
+# vim:syn=zsh
+
+# Some common aliases.
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias ..="cd .."
+alias sz="du -sh"
+alias ps="ps -af"
+
+# Download all images linked on a site.
+alias gallery="wget -R '*thumb*' -A '*.jpg' -r -l2 -nd"
+
+alias screen='export TERM=rxvt; screen'
