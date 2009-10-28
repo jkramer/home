@@ -114,4 +114,5 @@ stty stop '^°'
 # Fuck, I hate Java!
 export PATH=$PATH:/usr/lib/java/bin
 export JAVA_HOME="/usr/lib/java/"
-export CLASSPATH=.:/usr/lib/java/:$HOME/source/blackberry/resources/foo
+
+
