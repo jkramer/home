@@ -1,6 +1,7 @@
 # vim:filetype=zsh
 
 _MAGIC_FILE=".zshrc"
+_LAST_DIRECTORY=""
 
 # Magically source files when changing directories. When changing to another
 # directory, search the directory and its parents for a file called ".env.rc"
@@ -9,16 +10,33 @@ _MAGIC_FILE=".zshrc"
 # project-specific aliases etc.
 function chpwd; {
 	DIRECTORY="$PWD"
+	FOUND=""
+
 	while true; do
 		[[ $PWD = '/' || $PWD == $HOME ]] && break
 
 		if [ -f "./$_MAGIC_FILE" ]; then
-			source "./$_MAGIC_FILE"
+			FOUND="$PWD"
 			break
 		fi
 
 		builtin cd -q ..
 	done
+
+	if [[ -z $FOUND ]]; then
+		if [[ ! -z $_LAST_DIRECTORY ]]; then
+			if [[ ! -z $functions[unmagic] ]]; then
+				unmagic
+				functions[unmagic]=""
+			fi
+			_LAST_DIRECTORY=""
+		fi
+	else
+		if [[ $FOUND != $_LAST_DIRECTORY ]]; then
+			source "$FOUND/$_MAGIC_FILE"
+			_LAST_DIRECTORY="$PWD"
+		fi
+	fi
 
 	builtin cd -q "$DIRECTORY"
 }
