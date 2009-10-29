@@ -1,0 +1,11 @@
+# vim:filetype=zsh
+
+# CTRL+p pastes the content of the X11 clipboard.
+function paste-xclip; {
+	BUFFER=$BUFFER"`xclip -o`"
+	zle end-of-line
+}
+
+zle -N paste-xclip
+
+bindkey "^P" paste-xclip
