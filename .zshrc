@@ -1,9 +1,6 @@
 
 # ~/.zshrc, written 2005-2009 by Jonas Kramer.
 
-# Clear screen on exit.
-trap "/usr/bin/clear" EXIT
-
 # Locale setup.
 export LANG="C"
 export LC_CTYPE="de_DE.utf8"

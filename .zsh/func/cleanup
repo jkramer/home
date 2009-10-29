@@ -1,0 +1,13 @@
+# vim:filetype=zsh
+
+trap "cleanup" EXIT
+
+function cleanup {
+	/usr/bin/clear
+
+	SHELLS=`pgrep -U $EUID "zsh" | grep -cv $$`
+
+	if [[ $SHELLS = 0 ]]; then
+		/bin/rm -f "$HOME/.gpg-agent-info"
+	fi
+}
