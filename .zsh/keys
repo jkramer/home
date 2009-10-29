@@ -29,3 +29,11 @@ zle -N edit-command-line
 bindkey '\ee' edit-command-line
 
 bindkey -s "\el" " | less"
+
+# CTRL+r searches history.
+function search-backwords; {
+	zle history-incremental-search-backward $BUFFER
+}
+zle -N search-backwords
+bindkey "^R" search-backwords
+

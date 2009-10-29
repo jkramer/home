@@ -84,36 +84,10 @@ source "$HOME/.zsh/keys"
 for SCRIPT in $HOME/.zsh/func/*; source "$SCRIPT"
 # ---
 
-
-# CTRL+p pastes the content of the X11 clipboard.
-function paste-xclip; {
-	BUFFER=$BUFFER"`xclip -o`"
-	zle end-of-line
-}
-zle -N paste-xclip
-bindkey "^P" paste-xclip
-
-# CTRL+r searches history.
-function search-backwords; {
-	zle history-incremental-search-backward $BUFFER
-}
-zle -N search-backwords
-bindkey "^R" search-backwords
-
 # RST colors.
 export RST_COLOR_FILENAME='38;5;202'
 export RST_COLOR_MATCH='38;5;112'
 
-# Vim template directory.
-export VIMTEMPLATE="$HOME/.vim/templates"
-
 stty stop '^°'
 
 [[ -z $BASE ]] && export BASE=$HOME
-
-
-# Fuck, I hate Java!
-export PATH=$PATH:/usr/lib/java/bin
-export JAVA_HOME="/usr/lib/java/"
-
-
