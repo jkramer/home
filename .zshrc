@@ -18,12 +18,15 @@ if [[ -z "$STY" && $TERM == *"rxvt"* && "$SCREENS" -eq 0 ]]; then
 fi
 # ---
 
-if [[ $TTY == *"/pts/"* ]]; then
-	export TERM='rxvt-unicode'
-fi
+# Terminal setup (required for 256 colors).
+if [[ $TERM != "linux" ]]; then
+	if [[ $TTY == *"/pts/"* ]]; then
+		export TERM='rxvt-unicode'
+	fi
 
-if [[ ! -z $STY ]]; then
-	export TERM='screen-bce'
+	if [[ ! -z $STY ]]; then
+		export TERM='screen-bce'
+	fi
 fi
 
 # Setup $PATH.
@@ -33,9 +36,8 @@ export PATH="$HOME/scripts:$PATH:/usr/local/bin:$HOME/.cabal/bin"
 # ---
 
 
-# Colorful prompt.
+# 256-color prompt.
 if [ $TERM = 'screen-bce' -o $TERM = 'screen.rxvt' -o $TERM = 'rxvt-unicode' ]; then
-	# 256 color prompt when GNU Screen supports it.
 	export PROMPT=$'%{\e[38;5;190m%}[%{\e[38;5;241m%}%n/%m:%(3c,.../%c,%~)%{\e[38;5;190m%}]#%b '
 else
 	export PROMPT=$'%{\e[1;32m%}[%{\e[1;30m%}%n/%m:%(3c,.../%c,%~)%{\e[1;32m%}]#%b '
@@ -66,7 +68,6 @@ setopt extendedglob autocd
 
 # Always set X11 display.
 export DISPLAY=":0.0"
-
 
 # History setup.
 setopt appendhistory bang_hist extendedhistory 
