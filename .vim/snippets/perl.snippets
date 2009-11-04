@@ -1,0 +1,29 @@
+# #!/usr/bin/perl
+snippet #!
+	#!/usr/bin/env perl
+	
+
+# Bionet::Object get/set method
+snippet bogs
+	sub ${1:attribute} {
+		my ($self, $value) = @_;
+
+		if(defined $value) {
+			$self->{$1} = $value;
+		}
+
+		return $self->{$1};
+	}
+
+	${2}
+
+
+# Bionet::Object get method
+snippet bog
+	sub ${1:attribute} {
+		my ($self) = @_;
+
+		return $self->{$1};
+	}
+
+	${2}
