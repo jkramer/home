@@ -29,7 +29,7 @@ fi
 # Setup $PATH.
 typeset -U PATH
 
-export PATH="$HOME/scripts:$PATH:/usr/local/bin:$HOME/.cabal/bin"
+export PATH="$HOME/scripts:$HOME/.cabal/bin:$PATH"
 # ---
 
 
