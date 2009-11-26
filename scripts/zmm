@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+# ZMM (ZSH Music Menu)
+# Copyright (C) 2009 by Jonas Kramer. All rights reserved.
+# Published under the terms of the GNU General Public License (GPL).
+
+typeset -A command_translation
+typeset -a command_list
+
+command_translation[previous]="prev"
+command_translation[delete]="del 0"
+
+command_list=(toggle previous next pause stop delete)
+
+print -l $command_list | dmenu $@ | {
+    read choice
+   
+    if [[ ! -z $choice ]]; then
+        if [[ ! -z $command_translation[$choice] ]]; then
+            choice=$command_translation[$choice]
+        fi
+       
+        mpc --no-status $choice
+    fi
+}
