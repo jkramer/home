@@ -1,0 +1,14 @@
+# vim:ft=muttrc
+
+# IMAP server setup.
+set spoolfile = "imaps://imap.example.com/INBOX"
+set folder    = "imaps://imap.example.com/"
+set record    = "imaps://imap.example.com/Sent"
+set imap_user = "someone"
+
+# SMTP server setup.
+set smtp_url = "smtp://someone@smtp.example.com"
+
+# Sender information.
+set realname = "My Real Name"
+set from = "someone@example.com"
