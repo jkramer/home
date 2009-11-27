@@ -91,3 +91,4 @@ map <leader>f :FufTag!<cr>
 map <leader>F :FufFile!<cr>
 map <leader>m :FufMruFile<cr>
 
+let omni_sql_no_default_maps = 1
