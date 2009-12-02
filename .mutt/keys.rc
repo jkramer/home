@@ -15,4 +15,4 @@ bind index \Cu half-up
 bind index gg first-entry
 bind index G last-entry
 
-bind index \Cg imap-fetch-mail
+bind index \Cr imap-fetch-mail
