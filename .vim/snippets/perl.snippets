@@ -9,10 +9,10 @@ snippet bogs
 		my ($self, $value) = @_;
 
 		if(defined $value) {
-			$self->{$1} = $value;
+			$self->set($1 => $value);
 		}
 
-		return $self->{$1};
+		return $self->get('$1');
 	}
 
 	${2}
@@ -23,7 +23,7 @@ snippet bog
 	sub ${1:attribute} {
 		my ($self) = @_;
 
-		return $self->{$1};
+		return $self->get('$1');
 	}
 
 	${2}
