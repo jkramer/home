@@ -6,10 +6,30 @@
 typeset -A command_translation
 typeset -a command_list
 
-command_translation[previous]="prev"
-command_translation[delete]="del 0"
 
-command_list=(toggle previous next pause stop delete)
+# Try to detect which player is running.
+
+# If $SHC_SOCKET is set and ppints to an existing file, assume that shell-fm is
+# running.
+if [[ ! -z $SHC_SOCKET && -e $SHC_SOCKET ]]; then
+	CTL="shc"
+	command_list=(next love ban pause stop quit)
+
+# Otherwise check if mpc is able to get the version from mpd. If so, it's
+# likely to be running...
+elif mpc version &>"/dev/null"; then
+	CTL="mpc --no-status"
+
+	command_list=(toggle previous next pause stop delete)
+
+	command_translation[previous]="prev"
+	command_translation[delete]="del 0"
+
+# If no running player is found, there's nothing to do for us.
+# TODO: Use dmenu to let the user choose a player to start.
+else
+	exit
+fi
 
 print -l $command_list | dmenu $@ | {
     read choice
@@ -19,6 +39,6 @@ print -l $command_list | dmenu $@ | {
             choice=$command_translation[$choice]
         fi
        
-        mpc --no-status $choice
+        $CTL $choice
     fi
 }
