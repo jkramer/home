@@ -10,6 +10,7 @@ source "~/.mutt/zenburn.rc"
 # S/MIME configuration and common key bindings.
 source "~/.mutt/smime.rc"
 source "~/.mutt/keys.rc"
+source "~/.mutt/content.rc"
 
 source "~/.mutt/account.rc"
 

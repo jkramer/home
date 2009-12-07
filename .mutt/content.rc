@@ -1,0 +1,4 @@
+# vim:filetype=muttrc
+
+auto_view text/html
+auto_view text/xhtml

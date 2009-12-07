@@ -1,1 +1,2 @@
 text/html; elinks -force-html -dump %s; copiousoutput
+text/xhtml; elinks -force-html -dump %s; copiousoutput
