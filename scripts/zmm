@@ -18,7 +18,11 @@ if [[ ! -z $SHC_SOCKET && -e $SHC_SOCKET ]]; then
 # Otherwise check if mpc is able to get the version from mpd. If so, it's
 # likely to be running...
 elif mpc version &>"/dev/null"; then
-	CTL="mpc --no-status"
+	CTL="mpc-ns"
+
+	mpc-ns () {
+		mpc --no-status $@
+	}
 
 	command_list=(toggle previous next pause stop delete)
 
