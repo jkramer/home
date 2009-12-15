@@ -16,3 +16,6 @@ bind index gg first-entry
 bind index G last-entry
 
 bind index \Cr imap-fetch-mail
+
+bind index R group-reply
+bind pager R group-reply
