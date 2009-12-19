@@ -8,7 +8,7 @@ set nobackup
 
 syntax enable
 
-colorscheme wombat256
+colorscheme lucius
 
 filetype plugin on
 filetype indent on
@@ -26,7 +26,7 @@ map gc :TlistToggle<cr>
 map <C-b> <esc>:BufExplorer<cr>
 
 " gz deletes current buffer, gb and gB jump to the next/previous buffer.
-map gz :bdelete<cr>
+map gz :Bclose<cr>
 map gb :bnext<cr>
 map gB :bprev<cr>
 
