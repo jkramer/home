@@ -92,3 +92,9 @@ map <leader>F :FufFile!<cr>
 map <leader>m :FufMruFile<cr>
 
 let omni_sql_no_default_maps = 1
+
+" Spaces at the end of a line are errors (or at least editing fails - mostly
+" from eclipse users...).
+highlight ExtraWhitespace ctermbg=88
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/
