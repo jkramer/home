@@ -43,6 +43,6 @@ print -l $command_list | dmenu $@ | {
             choice=$command_translation[$choice]
         fi
        
-        $CTL $choice
+        $CTL ${(s: :)choice}
     fi
 }
