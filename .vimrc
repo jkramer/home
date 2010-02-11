@@ -98,3 +98,6 @@ let omni_sql_no_default_maps = 1
 highlight ExtraWhitespace ctermbg=88
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
+
+set completeopt=menu,longest
+let g:SuperTabDefaultCompletionType = "<c-p>"
