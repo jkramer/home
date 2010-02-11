@@ -1,0 +1,20 @@
+
+escape "^xX"
+
+crlf off
+vbell off
+
+startup_message off
+
+bufferfile "$HOME/.screen-exchange"
+
+activity 'Activity in window %n!'
+
+shell "/usr/bin/zsh"
+
+ignorecase on
+
+# 256 colors setup.
+attrcolor b ".I"
+termcapinfo rxvt 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
