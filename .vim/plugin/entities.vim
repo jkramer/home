@@ -39,7 +39,7 @@ fu! entities#EscapeGerman(rb, re)
 	silent! exe ":" . a:rb . "," . a:re . "s#ö#\\&ouml;#g"
 	silent! exe ":" . a:rb . "," . a:re . "s#ü#\\&uuml;#g"
 
-	silent! exe ":" . a:rb . "," . a:re . "s#ß#\&szlig;#g"
+	silent! exe ":" . a:rb . "," . a:re . "s#ß#\\&szlig;#g"
 endf
 
 command! -bar -range EscapeHTML call entities#EscapeHTML(<line1>, <line2>)
