@@ -67,13 +67,6 @@ au Filetype html,xml,xsl source ~/.vim/ftplugin/closetag.vim
 let g:closetag_html_style=1 
 
 
-" Use tags file from the project root (works best with a .env.rc file - check
-" .zsh/func/magic).
-if exists("$BASE") && $BASE != $HOME
-	set tags=$BASE/tags
-endif
-
-
 " Get VCS Command key maps out of the way.
 let VCSCommandMapPrefix = '<Leader>vv'
 nnoremap <Leader>vd :VCSVimDiff<CR>
@@ -101,3 +94,16 @@ match ExtraWhitespace /\s\+\%#\@<!$/
 
 set completeopt=menu,longest
 let g:SuperTabDefaultCompletionType = "<c-p>"
+
+
+" Use tags file from the project root (works best with a local .zshrc file -
+" check ~/.zsh/func/magic). Also source another local .vimrc if available.
+if exists("$BASE") && $BASE != $HOME
+	set tags=$BASE/tags
+
+	if filereadable($BASE . "/.vimrc")
+		source $BASE/.vimrc
+	endif
+endif
+
+
