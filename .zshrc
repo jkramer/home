@@ -78,7 +78,7 @@ export SAVEHIST=65535
 source "$HOME/.zsh/aliases"
 source "$HOME/.zsh/keys"
 
-for SCRIPT in $HOME/.zsh/func/*; source "$SCRIPT"
+for SCRIPT in $HOME/.zsh/func/**/*(.); source "$SCRIPT"
 # ---
 
 # RST colors.
