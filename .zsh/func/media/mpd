@@ -16,3 +16,6 @@ function run-mpd () {
 function stop-mpd () {
 	$MPD --kill &> /dev/null
 }
+
+
+run-mpd

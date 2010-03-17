@@ -19,3 +19,6 @@ function stop-scrobby () {
 		kill "$(<$SCROBBY_PID_FILE)"
 	fi
 }
+
+
+run-scrobby
