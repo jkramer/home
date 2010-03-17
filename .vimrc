@@ -8,7 +8,7 @@ set nobackup
 
 syntax enable
 
-colorscheme lucius
+colorscheme xoria256
 
 filetype plugin on
 filetype indent on
@@ -92,9 +92,6 @@ highlight ExtraWhitespace ctermbg=88
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
 
-set completeopt=menu,longest
-let g:SuperTabDefaultCompletionType = "<c-p>"
-
 
 " Use tags file from the project root (works best with a local .zshrc file -
 " check ~/.zsh/func/magic). Also source another local .vimrc if available.
@@ -107,3 +104,4 @@ if exists("$BASE") && $BASE != $HOME
 endif
 
 
+autocmd BufNewFile,BufRead *.p6 setf perl6
