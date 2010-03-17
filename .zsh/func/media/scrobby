@@ -1,0 +1,21 @@
+# vim:ft=zsh
+
+SCROBBY_HOME="$HOME/.scrobby"
+SCROBBY_PID_FILE="$SCROBBY_HOME/scrobby.pid"
+SCROBBY_CFG_FILE="$SCROBBY_HOME/scrobby.conf"
+
+
+function run-scrobby () {
+	if [[ -e "$SCROBBY_PID_FILE" ]]; then
+		# Scrobby already running, do nothing.
+	else
+		/usr/bin/scrobby "SCROBBY_CFG_FILE"
+	fi
+}
+
+
+function stop-scrobby () {
+	if [[ -e "$SCROBBY_PID_FILE" ]]; then
+		kill "$(<$SCROBBY_PID_FILE)"
+	fi
+}

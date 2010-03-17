@@ -1,0 +1,18 @@
+# vim:ft=zsh
+
+MPD_HOME="$HOME/.mpd"
+MPD="/usr/bin/mpd"
+
+
+function run-mpd () {
+	if [[ -e "$MPD_HOME/pid" ]]; then
+		# MPD already running, do nothing.
+	else
+		$MPD &> /dev/null
+	fi
+}
+
+
+function stop-mpd () {
+	$MPD --kill &> /dev/null
+}
