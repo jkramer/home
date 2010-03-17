@@ -17,13 +17,6 @@
 
 " Bla-bla ----------------------------------------------------------------------
 
-if &t_Co != 256 && ! has("gui_running")
-  echomsg ""
-  echomsg "err: please use GUI or a 256-color terminal (so that t_Co=256 could be set)"
-  echomsg ""
-  finish
-endif
-
 set background=dark
 
 hi clear
@@ -39,7 +32,7 @@ let colors_name = "xoria256"
 " The real part ----------------------------------------------------------------
 
 "" General colors
-hi Normal       ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=none
+hi Normal       ctermfg=252 guifg=#d0d0d0 ctermbg=233 guibg=#1c1c1c cterm=none gui=none
 hi CursorColumn                           ctermbg=238 guibg=#444444
 hi Cursor                                 ctermbg=214 guibg=#ffaf00
 hi CursorLine                             ctermbg=238 guibg=#444444
