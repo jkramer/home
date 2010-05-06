@@ -2,7 +2,15 @@
 
 GPG_INFO_FILE="$HOME/.gpg-agent-info"
 
-if [[ ! -f "$GPG_INFO_FILE" ]]; then
+function is-gpg-agent-running () {
+	if [[ -e "$GPG_INFO_FILE" ]]; then
+		return 0
+	else
+		return -1
+	fi
+}
+
+if ! is-gpg-agent-running; then
 	eval $(gpg-agent --daemon --write-env-file $GPG_INFO_FILE)
 fi
 

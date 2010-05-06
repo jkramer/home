@@ -5,16 +5,21 @@ MPD="/usr/bin/mpd"
 
 
 function run-mpd () {
-	if [[ -e "$MPD_HOME/pid" ]]; then
-		# MPD already running, do nothing.
-	else
-		$MPD &> /dev/null
-	fi
+	is-mpd-running || $MPD &> /dev/null
 }
 
 
 function stop-mpd () {
-	$MPD --kill &> /dev/null
+	is-mpd-running && $MPD --kill &> /dev/null
+}
+
+
+function is-mpd-running () {
+	if [[ -e "$MPD_HOME/pid" ]]; then
+		return 0
+	else
+		return -1
+	fi
 }
 
 

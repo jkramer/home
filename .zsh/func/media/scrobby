@@ -9,14 +9,21 @@ function run-scrobby () {
 	if [[ -e "$SCROBBY_PID_FILE" ]]; then
 		# Scrobby already running, do nothing.
 	else
-		/usr/bin/scrobby "SCROBBY_CFG_FILE"
+		/usr/bin/scrobby "$SCROBBY_CFG_FILE"
 	fi
 }
 
 
 function stop-scrobby () {
+	is-scrobby-running && kill "$(<$SCROBBY_PID_FILE)"
+}
+
+
+function is-scrobby-running () {
 	if [[ -e "$SCROBBY_PID_FILE" ]]; then
-		kill "$(<$SCROBBY_PID_FILE)"
+		return 0
+	else
+		return -1
 	fi
 }
 
