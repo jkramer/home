@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # ZMM (ZSH Music Menu)
-# Copyright (C) 2009 by Jonas Kramer. All rights reserved.
+# Copyright (C) 2009-2010 by Jonas Kramer. All rights reserved.
 # Published under the terms of the GNU General Public License (GPL).
 
 typeset -A command_translation
@@ -12,7 +12,20 @@ typeset -a command_list
 # If $SHC_SOCKET is set and ppints to an existing file, assume that shell-fm is
 # running.
 if [[ ! -z $SHC_SOCKET && -e $SHC_SOCKET ]]; then
-	CTL="shc"
+	CTL="shell-fm-command"
+
+	shell-fm-command () {
+		COMMAND="$@"
+
+		zmodload 'zsh/net/socket'
+		if ! zsocket $SHC_SOCKET; then
+			print -u 2 "Socket connection failed. $!."
+			exit -1
+		fi
+
+		print -u $REPLY "$COMMAND"
+	}
+
 	command_list=(next love ban pause stop quit)
 
 # Otherwise check if mpc is able to get the version from mpd. If so, it's
@@ -37,12 +50,12 @@ fi
 
 print -l $command_list | dmenu $@ | {
     read choice
-   
+
     if [[ ! -z $choice ]]; then
         if [[ ! -z $command_translation[$choice] ]]; then
             choice=$command_translation[$choice]
         fi
-       
+
         $CTL ${(s: :)choice}
     fi
 }
