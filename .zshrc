@@ -35,7 +35,7 @@ export PATH="$HOME/scripts:$HOME/.cabal/bin:$PATH"
 
 # 256-color prompt.
 if [ $TERM = 'screen-bce' -o $TERM = 'screen.rxvt' -o $TERM = 'rxvt-unicode' ]; then
-	export PROMPT=$'%{\e[38;5;190m%}[%{\e[38;5;241m%}%n/%m:%(3c,.../%c,%~)%{\e[38;5;190m%}]#%b '
+	export PROMPT=$'%{\e[38;5;241m%}[%{\e[38;5;238m%}%n/%m:%(3c,.../%c,%~)%{\e[38;5;241m%}]%b# '
 else
 	export PROMPT=$'%{\e[1;32m%}[%{\e[1;30m%}%n/%m:%(3c,.../%c,%~)%{\e[1;32m%}]#%b '
 fi
@@ -44,7 +44,7 @@ fi
 
 # Less setup.
 export PAGER='/usr/bin/less'
-export LESS="-rwJQ"
+export LESS="-rwJQi"
 
 # Vim as default editor.
 export EDITOR='/usr/bin/vim'
