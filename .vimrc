@@ -8,12 +8,12 @@ set nobackup
 
 syntax enable
 
-colorscheme xoria256
+colorscheme wombat256
 
 filetype plugin on
 filetype indent on
 
-set mouse=v
+set mouse=
 set diffopt=filler,vertical
 
 " Map CTRL+c on ESC - easier/faster to type.
@@ -76,13 +76,13 @@ nnoremap <Leader>vo :VCSGotoOriginal!<CR>
 nnoremap cd ]czz
 nnoremap cD [czz
 
-set nofoldenable
-
 " FuzzyFinder setup.
 let g:fuf_abbrevMap = { ' ' : ['*']}
 map <leader>f :FufTag!<cr>
 map <leader>F :FufFile!<cr>
 map <leader>m :FufMruFile<cr>
+map <leader>b :FufBookmark<cr>
+map <leader>B :FufAddBookmar<cr>
 
 let omni_sql_no_default_maps = 1
 
@@ -105,3 +105,12 @@ endif
 
 
 autocmd BufNewFile,BufRead *.p6 setf perl6
+
+
+set foldmethod=syntax
+set foldlevelstart=1
+set foldlevel=1
+set foldnestmax=2
+set foldclose=all
+
+set cino=(s,m1,M0,j1
