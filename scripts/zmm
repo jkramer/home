@@ -28,6 +28,8 @@ if [[ ! -z $SHC_SOCKET && -e $SHC_SOCKET ]]; then
 
 	command_list=(next love ban pause stop quit)
 
+	command_translation[next]="skip"
+
 # Otherwise check if mpc is able to get the version from mpd. If so, it's
 # likely to be running...
 elif mpc version &>"/dev/null"; then
