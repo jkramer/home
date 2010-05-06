@@ -37,3 +37,7 @@ function search-backwords; {
 zle -N search-backwords
 bindkey "^R" search-backwords
 
+
+# Make sure the normal history arrow keys are used, not vi-*.
+bindkey "^[[A" up-line-or-history
+bindkey "^[[B" down-line-or-history
