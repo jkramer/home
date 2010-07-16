@@ -1,0 +1,10 @@
+# vim:filetype=zsh
+
+function cd () {
+	TARGET="$1"
+	if [[ -f "$TARGET" ]]; then
+		builtin cd "${TARGET:h}"
+	else
+		builtin cd $@
+	fi
+}
