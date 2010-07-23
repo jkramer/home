@@ -83,6 +83,7 @@ map <leader>F :FufFile!<cr>
 map <leader>m :FufMruFile<cr>
 map <leader>b :FufBookmark<cr>
 map <leader>B :FufAddBookmar<cr>
+map QQ :qa!<cr>
 
 let omni_sql_no_default_maps = 1
 
@@ -114,3 +115,10 @@ set foldnestmax=2
 set foldclose=all
 
 set cino=(s,m1,M0,j1
+
+set cursorline
+
+
+augroup markdown
+	autocmd BufRead *.mkd,*.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+augroup END
