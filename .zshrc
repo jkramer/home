@@ -29,7 +29,7 @@ fi
 # Setup $PATH.
 typeset -U PATH
 
-export PATH="$HOME/scripts:$HOME/.cabal/bin:$PATH"
+export PATH="$HOME/scripts:$HOME/.cabal/bin:$PATH:$HOME/.local/bin"
 # ---
 
 
@@ -44,7 +44,7 @@ fi
 
 # Less setup.
 export PAGER='/usr/bin/less'
-export LESS="-rwJQi"
+export LESS="-rwJQiS"
 
 # Vim as default editor.
 export EDITOR='/usr/bin/vim'
