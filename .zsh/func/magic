@@ -4,8 +4,8 @@ _MAGIC_FILE=".zshrc"
 _LAST_DIRECTORY=""
 
 # Magically source files when changing directories. When changing to another
-# directory, search the directory and its parents for a file called ".env.rc"
-# or "env" and source it, if found. Useful to set stuff for projects
+# directory, search the directory and its parents for a file called ".zshrc"
+# and source it, if found. Useful to set stuff for projects
 # automatically, like exporting PERL5LIB, generating ctags files, setting up
 # project-specific aliases etc.
 function chpwd; {
