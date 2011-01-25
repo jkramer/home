@@ -1,6 +1,0 @@
-# vim:ft=zsh
-
-export PATH="$PATH:$HOME/source/subtle"
-
-export SUBTLE_HOME="$HOME/.subtle"
-export SUBLET_HOME="$SUBTLE_HOME/sublets"
