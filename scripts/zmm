@@ -9,7 +9,7 @@ typeset -a command_list
 
 # Try to detect which player is running.
 
-# If $SHC_SOCKET is set and ppints to an existing file, assume that shell-fm is
+# If $SHC_SOCKET is set and points to an existing file, assume that shell-fm is
 # running.
 if [[ ! -z $SHC_SOCKET && -e $SHC_SOCKET ]]; then
 	CTL="shell-fm-command"
@@ -18,6 +18,7 @@ if [[ ! -z $SHC_SOCKET && -e $SHC_SOCKET ]]; then
 		COMMAND="$@"
 
 		zmodload 'zsh/net/socket'
+
 		if ! zsocket $SHC_SOCKET; then
 			print -u 2 "Socket connection failed. $!."
 			exit -1
@@ -26,8 +27,7 @@ if [[ ! -z $SHC_SOCKET && -e $SHC_SOCKET ]]; then
 		print -u $REPLY "$COMMAND"
 	}
 
-	command_list=(next love ban pause stop quit)
-
+	command_list=(next love ban pause quit)
 	command_translation[next]="skip"
 
 # Otherwise check if mpc is able to get the version from mpd. If so, it's
@@ -39,15 +39,17 @@ elif mpc version &>"/dev/null"; then
 		mpc --no-status $@
 	}
 
-	command_list=(toggle previous next pause stop delete)
+	command_list=(next previous pause stop delete)
 
 	command_translation[previous]="prev"
 	command_translation[delete]="del 0"
+	command_translation[pause]="toggle"
 
 # If no running player is found, there's nothing to do for us.
 # TODO: Use dmenu to let the user choose a player to start.
 else
-	exit
+	command_list=("shell-fm -d" "mpd")
+	CTL=""
 fi
 
 print -l $command_list | dmenu $@ | {
