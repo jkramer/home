@@ -5,5 +5,5 @@ urxvt*boldFont: -xos4-terminus-bold-r-normal--14-140-72-72-c-80-iso8859-1
 urxvt*foreground: white
 urxvt*cursorColor: darkgray
 urxvt*scrollBar: false
-urxvt*transparent: true
+urxvt*transparent: false
 urxvt*shading: 10
