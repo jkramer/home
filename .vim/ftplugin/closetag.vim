@@ -124,7 +124,7 @@
 " if html, don't close certain tags.  Works best if ignorecase is set.
 " otherwise, capitalize these elements according to your html editing style
 if !exists("b:unaryTagsStack") || exists("b:closetag_html_style")
-    if &filetype == "html" || exists("b:closetag_html_style")
+    if &filetype == "html" || &filetype == "tt2html" || exists("b:closetag_html_style")
 	let b:unaryTagsStack="area base br dd dt hr img input link meta param"
     else " for xsl and xsl
 	let b:unaryTagsStack=""
