@@ -1,4 +1,0 @@
-# vim:ft=zsh
-
-# Home of podsync.
-export PODSYNCHOME="$HOME/media/podsync"
