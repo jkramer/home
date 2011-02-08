@@ -116,8 +116,6 @@ set foldclose=all
 
 set cino=(s,m1,M0,j1
 
-set cursorline
-
 
 augroup markdown
 	autocmd BufRead *.mkd,*.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
