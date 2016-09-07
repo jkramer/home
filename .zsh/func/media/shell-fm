@@ -1,8 +1,0 @@
-# vim:syn=zsh
-
-
-export SHC_SOCKET="/tmp/shell-fm.sck"
-
-
-
-
