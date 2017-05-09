@@ -1,5 +1,5 @@
 
-set tabstop=4 shiftwidth=4
+set tabstop=2 shiftwidth=2 expandtab smarttab
 set autoindent modeline
 set backspace=indent,eol,start
 set ignorecase smartcase fdm=marker
