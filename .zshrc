@@ -88,3 +88,6 @@ export RST_COLOR_MATCH='38;5;112'
 stty stop '^°'
 
 [[ -z $BASE ]] && export BASE=$HOME
+
+autoload -U select-word-style
+select-word-style bash

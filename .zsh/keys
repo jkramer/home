@@ -11,6 +11,14 @@ bindkey "^E" "end-of-line"
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
 
+# Same for tmux.
+bindkey "\e^[OC" forward-word
+bindkey "\e^[OD" backward-word
+
+# Vim-like forward/backward words.
+bindkey "\ew" forward-word
+bindkey "\eb" backward-word
+
 # Control + B jumps to "base" directory.
 function return-to-base; {
 	if [[ ! -z "$BASE" ]]; then
