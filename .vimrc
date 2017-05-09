@@ -10,8 +10,7 @@ syntax enable
 
 colorscheme wombat256
 
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 set mouse=
 set diffopt=filler,vertical
@@ -122,3 +121,5 @@ set cursorline
 augroup markdown
 	autocmd BufRead *.mkd,*.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 augroup END
+
+execute pathogen#infect()
