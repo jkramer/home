@@ -7,27 +7,3 @@ snippet #!
 
 	${1}
 
-# Bionet::Object get/set method
-snippet bogs
-	sub ${1:attribute} {
-		my ($self, $value) = @_;
-
-		if(defined $value) {
-			$self->set($1 => $value);
-		}
-
-		return $self->get('$1');
-	}
-
-	${2}
-
-
-# Bionet::Object get method
-snippet bog
-	sub ${1:attribute} {
-		my ($self) = @_;
-
-		return $self->get('$1');
-	}
-
-	${2}
